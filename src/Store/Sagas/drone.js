@@ -1,5 +1,6 @@
 import { call, put } from "redux-saga/effects"
 import api from "../../Services/api"
+import history from "../../Services/history"
 
 import { Creators as DroneActions } from "../Ducks/drone"
 
@@ -21,8 +22,9 @@ export function* postDrone(action) {
 
     const response = yield call(api.post, "/drone", payload)
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       yield put(DroneActions.postDroneSuccess())
+      history.push("/")
     }
   } catch (error) {
     throw new Error("Houve um erro ao cadastrar o drone")

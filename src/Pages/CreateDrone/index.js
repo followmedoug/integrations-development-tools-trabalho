@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
 import { Creators as DroneActions } from "../../Store/Ducks/drone"
 
@@ -13,12 +14,14 @@ import Button from "../../Components/Button"
 
 export default function CreateDrone() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [name, setName] = useState("")
   const [rastreavel, setRastreavel] = useState(false)
 
   const handleCreate = () => {
     dispatch(DroneActions.postDroneRequest({ nome: name, rastreavel }))
+    navigate("/")
   }
 
   return (

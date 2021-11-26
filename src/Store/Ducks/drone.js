@@ -42,6 +42,6 @@ export const Creators = {
   getDronesSuccess: (data) => ({ type: Types.GET_DRONES_SUCCESS, data }),
   getDronesError: () => ({ type: Types.GET_DRONES_SUCCESS }),
   postDroneRequest: (payload) => ({ type: Types.POST_DRONE_REQUEST, payload }),
-  postDroneSuccess: () => ({ type: Types.POST_DRONES_SUCCESS }),
+  postDroneSuccess: () => ({ type: Types.POST_DRONE_SUCCESS }),
   postDroneError: () => ({ type: Types.POST_DRONES_ERROR }),
 }
