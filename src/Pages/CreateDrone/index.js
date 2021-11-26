@@ -1,4 +1,8 @@
 import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+
+import { Creators as DroneActions } from "../../Store/Ducks/drone"
+
 import ContainerMain from "../../Components/ContainerMain"
 import Title from "../../Components/Title"
 import Form from "../../Components/Form"
@@ -8,11 +12,13 @@ import WrapperFlex from "../../Components/WrapperFlex"
 import Button from "../../Components/Button"
 
 export default function CreateDrone() {
+  const dispatch = useDispatch()
+
   const [name, setName] = useState("")
   const [rastreavel, setRastreavel] = useState(false)
 
   const handleCreate = () => {
-    console.log("vamo ver: ", name, rastreavel)
+    dispatch(DroneActions.postDroneRequest({ nome: name, rastreavel }))
   }
 
   return (
