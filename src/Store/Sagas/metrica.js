@@ -8,7 +8,7 @@ export function* getMetrica() {
     const response = yield call(api.get, "/metrica")
 
     if (response.status === 200) {
-      yield put(MetricaActions.getMetricaSuccess(response.data))
+      yield put(MetricaActions.getMetricaSuccess(response.data.content))
     }
   } catch (error) {
     throw new Error("houve um erro ao buscar metricas")
