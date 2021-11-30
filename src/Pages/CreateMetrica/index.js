@@ -29,6 +29,7 @@ export default function CreateDrone() {
   const navigate = useNavigate()
 
   const { data } = useSelector((state) => state.drone)
+  const { loading, success } = useSelector((state) => state.metrica)
 
   const [latitude, setLatitude] = useState("")
   const [longitude, setLongitude] = useState("")
@@ -56,6 +57,12 @@ export default function CreateDrone() {
       })
     )
   }
+
+  useEffect(() => {
+    if (!loading && success) {
+      navigate("/")
+    }
+  }, [loading, success])
 
   useEffect(() => {
     if (data.length) {

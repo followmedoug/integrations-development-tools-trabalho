@@ -22,8 +22,6 @@ export default function Home() {
     dispatch(MetricasActions.getMetricaRequest())
   }, [])
 
-  console.log(data)
-
   return (
     <ContainerMain>
       <WrapperFlex

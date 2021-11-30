@@ -1,6 +1,5 @@
 import { call, put } from "redux-saga/effects"
 import api from "../../Services/api"
-import history from "../../Services/history"
 
 import { Creators as MetricaActions } from "../Ducks/metrica"
 
@@ -24,7 +23,6 @@ export function* postMetrica(action) {
 
     if (response.status === 204) {
       yield put(MetricaActions.postMetricaSuccess())
-      history.push("/")
     }
   } catch (error) {
     throw new Error("Houve um erro ao tentar cadastrar uma métrica")

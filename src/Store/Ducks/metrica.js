@@ -11,12 +11,13 @@ const INITIAL_STATE = {
   data: [],
   loading: false,
   hasError: false,
+  success: false,
 }
 
 export default function metrica(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_METRICA_REQUEST:
-      return { ...state, loading: true, data: [] }
+      return { ...state, loading: true, data: [], success: false }
 
     case Types.GET_METRICA_SUCCESS:
       return { ...state, loading: false, data: action.data }
@@ -25,13 +26,13 @@ export default function metrica(state = INITIAL_STATE, action) {
       return { ...state, loading: false }
 
     case Types.POST_METRICA_REQUEST:
-      return { ...state, loading: true, hasError: false }
+      return { ...state, loading: true, hasError: false, success: false }
 
     case Types.POST_METRICA_SUCCESS:
-      return { ...state, loading: false }
+      return { ...state, loading: false, success: true }
 
     case Types.POST_METRICA_ERROR:
-      return { ...state, loading: false, hasError: true }
+      return { ...state, loading: false, hasError: true, success: false }
 
     default:
       return state
