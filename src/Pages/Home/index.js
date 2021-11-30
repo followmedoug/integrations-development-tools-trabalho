@@ -53,6 +53,7 @@ export default function Home() {
               <TableHeader>Longitude</TableHeader>
               <TableHeader>Temperatura</TableHeader>
               <TableHeader>Umidade</TableHeader>
+              <TableHeader>Drone</TableHeader>
             </tr>
             {data.map((d) => (
               <TableLine>
@@ -60,6 +61,7 @@ export default function Home() {
                 <TableValue>{d.longitude}</TableValue>
                 <TableValue>{d.temperatura || "-"}</TableValue>
                 <TableValue>{d.umidade}</TableValue>
+                <TableValue>{d.droneNome}</TableValue>
               </TableLine>
             ))}
           </Table>
