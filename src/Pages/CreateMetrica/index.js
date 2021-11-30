@@ -55,8 +55,6 @@ export default function CreateDrone() {
         umidade,
       })
     )
-
-    navigate("/")
   }
 
   useEffect(() => {
@@ -91,11 +89,11 @@ export default function CreateDrone() {
         />
         <Input
           placeholder="Insira a temperatura"
-          onChange={(e) => setTemperatura(e.target.value)}
+          onChange={(e) => setTemperatura(Number(e.target.value))}
         />
         <Input
           placeholder="Insira a umidade"
-          onChange={(e) => setUmidade(e.target.value)}
+          onChange={(e) => setUmidade(Number(e.target.value))}
         />
       </Form>
       <WrapperFlex
