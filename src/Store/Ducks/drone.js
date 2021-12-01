@@ -24,7 +24,13 @@ const INITIAL_STATE = {
 export default function drone(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_DRONES_REQUEST:
-      return { ...state, loading: true, data: [] }
+      return {
+        ...state,
+        loading: true,
+        data: [],
+        success: false,
+        hasError: false,
+      }
 
     case Types.GET_DRONES_SUCCESS:
       return { ...state, loading: false, data: action.data }
@@ -73,7 +79,7 @@ export const Creators = {
   getDronesError: () => ({ type: Types.GET_DRONES_SUCCESS }),
   postDroneRequest: (payload) => ({ type: Types.POST_DRONE_REQUEST, payload }),
   postDroneSuccess: () => ({ type: Types.POST_DRONE_SUCCESS }),
-  postDroneError: () => ({ type: Types.POST_DRONES_ERROR }),
+  postDroneError: () => ({ type: Types.POST_DRONE_ERROR }),
   getDroneByIdRequest: (id) => ({ type: Types.GET_DRONE_BY_ID_REQUEST, id }),
   getDroneByIdSuccess: (item) => ({
     type: Types.GET_DRONE_BY_ID_SUCCESS,

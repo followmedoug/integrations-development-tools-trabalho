@@ -23,6 +23,8 @@ export function* postDrone(action) {
 
     if (response.status === 201) {
       yield put(DroneActions.postDroneSuccess())
+    } else if (response.status === 400) {
+      yield put(DroneActions.postDroneError())
     }
   } catch (error) {
     throw new Error("Houve um erro ao cadastrar o drone")
