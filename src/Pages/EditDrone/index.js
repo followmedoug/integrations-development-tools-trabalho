@@ -48,7 +48,6 @@ export default function EditDrone() {
   }, [success, loading])
 
   useEffect(() => {
-    console.log(hasError)
     if (!loading && hasError) {
       setShowError(!showError)
     }
