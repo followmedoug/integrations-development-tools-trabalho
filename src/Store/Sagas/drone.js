@@ -53,6 +53,8 @@ export function* putDroneById(action) {
 
     if (response.status === 200) {
       yield put(DroneActions.putDroneByIdSuccess())
+    } else if (response.status === 400) {
+      yield put(DroneActions.putDroneByIdError())
     }
   } catch (error) {
     throw new Error("Houve um erro ao tentar editar o drone")

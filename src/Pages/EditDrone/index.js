@@ -17,10 +17,13 @@ export default function EditDrone() {
   const navigate = useNavigate()
   const { id } = useParams()
 
-  const { item, loading, success } = useSelector((state) => state.drone)
+  const { item, loading, success, hasError } = useSelector(
+    (state) => state.drone
+  )
 
   const [name, setName] = useState("")
   const [rastreavel, setRastreavel] = useState(false)
+  const [showError, setShowError] = useState(false)
 
   const handleEdit = () => {
     dispatch(
@@ -45,6 +48,13 @@ export default function EditDrone() {
   }, [success, loading])
 
   useEffect(() => {
+    console.log(hasError)
+    if (!loading && hasError) {
+      setShowError(!showError)
+    }
+  }, [loading, hasError])
+
+  useEffect(() => {
     dispatch(DroneActions.getDroneByIdRequest(id))
   }, [])
 
@@ -67,6 +77,11 @@ export default function EditDrone() {
           />
         </WrapperFlex>
       </Form>
+      {showError && (
+        <span style={{ color: "red", weight: 900, margin: "10px 0" }}>
+          Ops! Algo deu errado, tente novamente mais tarde.
+        </span>
+      )}
       <WrapperFlex
         style={{ width: "100%", justifyContent: "center", margin: "15px 0" }}
       >
